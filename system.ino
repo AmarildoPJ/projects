@@ -11,7 +11,7 @@ void setup() {
     delay(10);                      // Aguarda a inicialização da porta serial
   }
   
-
+  // Inicializa a comunicação I2C com pinos definidos para o ESP32
   Wire.begin(19, 22);               // Configura o pino GPIO 19 como SDA e GPIO 22 como SCL
 
   if (!mpu.begin()) {               // Inicializa o sensor MPU6050
@@ -27,9 +27,9 @@ void setup() {
 }
 
 void loop() {
-  sensors_event_t a;        // Declara estruturas para armazenar dados do acelerômetro
+  sensors_event_t a, g, temp;        // Declara estruturas para armazenar dados do acelerômetro, giroscópio e temperatura
   
-  mpu.getEvent(&a);       // Captura os dados do sensor
+  mpu.getEvent(&a, &g, &temp);       // Captura os dados do sensor
 
   // Imprime os valores de aceleração em cada eixo (X, Y, Z) na porta serial
   Serial.print(a.acceleration.x); Serial.print(" ");
