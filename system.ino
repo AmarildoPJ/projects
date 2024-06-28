@@ -29,7 +29,7 @@ void loop() {
 
   mpu.getEvent(&a, &g, &temp);       // Captura os dados do sensor
 
-  // Imprime os valores de aceleração em cada eixo (X, Y, Z) na porta serial
+  // Imprime os valores de aceleração em cada eixo (X, Y, Z), para realizar o plot do grafico na IDE.
   Serial.print(a.acceleration.x); Serial.print(" ");
   Serial.print(a.acceleration.y); Serial.print(" ");
   Serial.println(a.acceleration.z);
